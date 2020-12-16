@@ -2,8 +2,10 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import {
+  Logout,
   StaticWebAuthLogins,
   UserInfoContextProvider,
+  UserPurge,
   useUserInfo,
 } from "@aaronpowell/react-static-web-apps-auth";
 
@@ -11,10 +13,18 @@ const UserDisplay = () => {
   const userInfo = useUserInfo();
   if (userInfo.identityProvider) {
     return (
-      <p>
-        {userInfo.identityProvider} {userInfo.userDetails} {userInfo.userId}{" "}
-        {userInfo.userRoles}
-      </p>
+      <div>
+        <p>
+          {userInfo.identityProvider} {userInfo.userDetails} {userInfo.userId}{" "}
+          {userInfo.userRoles}
+        </p>
+        <p>
+          <Logout />
+        </p>
+        <p>
+          <UserPurge provider={userInfo.identityProvider} />
+        </p>
+      </div>
     );
   }
 

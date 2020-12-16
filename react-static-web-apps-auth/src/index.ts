@@ -4,3 +4,5 @@ export {
   UserInfoContextProvider,
   useUserInfo,
 } from "./UserInfoContext";
+export { Logout } from "./Logout";
+export { UserPurge } from "./UserPurge";

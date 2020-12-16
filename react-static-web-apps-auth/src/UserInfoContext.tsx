@@ -1,13 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { AuthProviders } from "./types";
 
 export type UserInfo = {
-  identityProvider:
-    | undefined
-    | "aad"
-    | "facebook"
-    | "twitter"
-    | "github"
-    | "google";
+  identityProvider: undefined | AuthProviders;
   userId: string | undefined;
   userDetails: string | undefined;
   userRoles: string[];

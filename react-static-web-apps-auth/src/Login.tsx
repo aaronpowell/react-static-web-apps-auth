@@ -1,4 +1,6 @@
 import React from "react";
+import { StaticWebAppsClassName } from "./constants";
+import { AuthProviders } from "./types";
 
 const Login = ({
   name,
@@ -6,7 +8,7 @@ const Login = ({
   postLoginRedirect,
 }: {
   name: string;
-  id: string;
+  id: AuthProviders;
   postLoginRedirect: string;
 }) => {
   return (
@@ -14,7 +16,7 @@ const Login = ({
       href={`/.auth/login/${id}${
         postLoginRedirect && `?post_login_redirect=${postLoginRedirect}`
       }`}
-      className={`${id} azure-swa-auth`}
+      className={`${id} login ${StaticWebAppsClassName}`}
     >
       Sign in using {name}
     </a>

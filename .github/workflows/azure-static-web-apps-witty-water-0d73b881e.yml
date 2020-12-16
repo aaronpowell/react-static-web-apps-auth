@@ -25,7 +25,7 @@ jobs:
           npm install
           npm run build
         name: Build module
-        working-directory: react-foldable
+        working-directory: react-static-web-apps-auth
       - run: |
           npm install
           npm run build

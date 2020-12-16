@@ -1,0 +1,70 @@
+name: Publish a release
+
+on:
+  push:
+    tags:
+      - v* #version is cut
+
+env:
+  NODE_VERSION: 12
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: react-static-web-apps-auth
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: react-static-web-apps-auth
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: react-static-web-apps-auth
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://npm.pkg.github.com/
+          scope: "@aaronpowell"
+      - run: npm ci
+      - run: echo "registry=https://npm.pkg.github.com/@aaronpowell" >> .npmrc
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

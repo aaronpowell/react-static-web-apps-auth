@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import {
-  AuthProviders,
+  StaticWebAuthLogins,
   UserInfoContextProvider,
   useUserInfo,
 } from "@aaronpowell/react-static-web-apps-auth";
@@ -37,7 +37,7 @@ function App() {
         >
           Learn React
         </a>
-        <AuthProviders />
+        <StaticWebAuthLogins />
 
         <UserInfoContextProvider>
           <UserDisplay />

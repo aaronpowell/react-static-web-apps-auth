@@ -1,4 +1,4 @@
-export { AuthProviders, AuthProvidersProps } from "./AuthProviders";
+export { StaticWebAuthLogins, LoginProviderProps } from "./StaticWebAuthLogins";
 export {
   UserInfo,
   UserInfoContextProvider,

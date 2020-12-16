@@ -1,0 +1,7 @@
+.github
+.ionide
+docs
+example
+node_modules
+tsconfig.json
+*.tgz

@@ -1,7 +1,25 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { AuthProviders } from "@aaronpowell/react-static-web-apps-auth";
+import {
+  AuthProviders,
+  UserInfoContextProvider,
+  useUserInfo,
+} from "@aaronpowell/react-static-web-apps-auth";
+
+const UserDisplay = () => {
+  const userInfo = useUserInfo();
+  if (userInfo.identityProvider) {
+    return (
+      <p>
+        {userInfo.identityProvider} {userInfo.userDetails} {userInfo.userId}{" "}
+        {userInfo.userRoles}
+      </p>
+    );
+  }
+
+  return <p>User not signed in</p>;
+};
 
 function App() {
   return (
@@ -20,6 +38,10 @@ function App() {
           Learn React
         </a>
         <AuthProviders />
+
+        <UserInfoContextProvider>
+          <UserDisplay />
+        </UserInfoContextProvider>
       </header>
     </div>
   );

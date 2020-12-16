@@ -1,3 +1,6 @@
-import AuthProviders, { AuthProvidersProps } from "./AuthProviders";
-
-export { AuthProviders, AuthProvidersProps };
+export { AuthProviders, AuthProvidersProps } from "./AuthProviders";
+export {
+  UserInfo,
+  UserInfoContextProvider,
+  useUserInfo,
+} from "./UserInfoContext";

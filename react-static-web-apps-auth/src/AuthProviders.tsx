@@ -43,4 +43,4 @@ const AuthProviders = (props: AuthProvidersProps) => {
 
 AuthProviders.defaultProps = defaultProps;
 
-export default AuthProviders;
+export { AuthProviders };

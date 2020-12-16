@@ -14,7 +14,7 @@ const Login = ({
   return (
     <a
       href={`/.auth/login/${id}${
-        postLoginRedirect && `?post_login_redirect=${postLoginRedirect}`
+        postLoginRedirect ? `?post_login_redirect=${postLoginRedirect}` : ""
       }`}
       className={`${id} login ${StaticWebAppsClassName}`}
     >

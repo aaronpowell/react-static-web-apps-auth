@@ -28,8 +28,10 @@ const UserInfoContextProvider = ({ children }: { children: JSX.Element }) => {
   useEffect(() => {
     const run = async () => {
       const res = await fetch("/.auth/me");
-      const json: { clientPrincipal: UserInfo } = await res.json();
-      setUserInfo(json.clientPrincipal);
+      const json: { clientPrincipal: UserInfo | null } = await res.json();
+      if (json.clientPrincipal) {
+        setUserInfo(json.clientPrincipal);
+      }
     };
 
     run();

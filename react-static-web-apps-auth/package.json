@@ -1,7 +1,7 @@
 {
   "name": "@aaronpowell/react-static-web-apps-auth",
   "version": "0.1.0",
-  "description": "",
+  "description": "A library to help creating authenticated React apps on Azure Static Web Apps",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -10,7 +10,16 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "npm run lint -- --fix"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "azure",
+    "cloud",
+    "serverless",
+    "hosting",
+    "static",
+    "authentication",
+    "staticwebapp"
+  ],
   "author": {
     "name": "Aaron Powell",
     "email": "me+github@aaron-powell.com",
@@ -38,5 +47,13 @@
   "peerDependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aaronpowell/react-static-web-apps-auth"
+  },
+  "bugs": {
+    "url": "https://github.com/aaronpowell/react-static-web-apps-auth/issues"
+  },
+  "homepage": "https://github.com/aaronpowell/react-static-web-apps-auth"
 }

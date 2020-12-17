@@ -1,5 +1,9 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [0.1.2]
+
+Poking DevOps pipelines and setting README.
+
 ## [0.1.0] - 2020-12-18
 
 Initial Release 🎉

@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [0.1.3] - 2021-01-04
+
+### Fixed
+
+- Release workflow didn't build before publishing
+
 ## [0.1.2]
 
 Poking DevOps pipelines and setting README.

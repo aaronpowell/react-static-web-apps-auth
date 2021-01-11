@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [0.1.4] - 2021-01-11
+
+### Changed
+
+- More work on build/release pipeline
+
 ## [0.1.3] - 2021-01-04
 
 ### Fixed

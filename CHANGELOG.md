@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [0.1.7] - 2021-03-11
+
+### Fixed
+
+- Redirect URLs for login/logout didn't work due to a wrong query string
+
 ## [0.1.6] - 2021-03-11
 
 ### Changed

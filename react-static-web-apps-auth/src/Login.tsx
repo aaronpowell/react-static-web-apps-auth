@@ -9,7 +9,7 @@ const Login = ({
 }: {
   name: string;
   id: AuthProviders;
-  postLoginRedirect: string;
+  postLoginRedirect?: string;
 }) => {
   return (
     <a

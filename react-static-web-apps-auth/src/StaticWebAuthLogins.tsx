@@ -7,26 +7,32 @@ export type LoginProviderProps = {
   twitter: boolean;
   github: boolean;
   google: boolean;
-  postLoginRedirect: string;
+  postLoginRedirect?: string;
 };
 
-const AzureADLogin = ({ postLoginRedirect }: { postLoginRedirect: string }) => (
-  <Login name="Azure AD" id="aad" postLoginRedirect={postLoginRedirect} />
-);
+const AzureADLogin = ({
+  postLoginRedirect,
+}: {
+  postLoginRedirect?: string;
+}) => <Login name="Azure AD" id="aad" postLoginRedirect={postLoginRedirect} />;
 const FacebookLogin = ({
   postLoginRedirect,
 }: {
-  postLoginRedirect: string;
+  postLoginRedirect?: string;
 }) => (
   <Login name="Facebook" id="facebook" postLoginRedirect={postLoginRedirect} />
 );
-const TwitterLogin = ({ postLoginRedirect }: { postLoginRedirect: string }) => (
+const TwitterLogin = ({
+  postLoginRedirect,
+}: {
+  postLoginRedirect?: string;
+}) => (
   <Login name="Twitter" id="twitter" postLoginRedirect={postLoginRedirect} />
 );
-const GitHubLogin = ({ postLoginRedirect }: { postLoginRedirect: string }) => (
+const GitHubLogin = ({ postLoginRedirect }: { postLoginRedirect?: string }) => (
   <Login name="GitHub" id="github" postLoginRedirect={postLoginRedirect} />
 );
-const GoogleLogin = ({ postLoginRedirect }: { postLoginRedirect: string }) => (
+const GoogleLogin = ({ postLoginRedirect }: { postLoginRedirect?: string }) => (
   <Login name="Google" id="google" postLoginRedirect={postLoginRedirect} />
 );
 

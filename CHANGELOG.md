@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [0.1.6] - 2021-03-11
+
+### Changed
+
+- Making the `postLoginRedirect` optional on login components
+
 ## [0.1.4] - 2021-01-11
 
 ### Changed

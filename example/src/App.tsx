@@ -47,7 +47,7 @@ function App() {
         >
           Learn React
         </a>
-        <StaticWebAuthLogins />
+        <StaticWebAuthLogins customProviders={[{ id: "okta", name: "Okta" }]} />
 
         <UserInfoContextProvider>
           <UserDisplay />

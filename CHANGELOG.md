@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [0.2.0]
+
+### Added
+
+- Support for custom auth providers as per GA!
+
 ## [0.1.7] - 2021-03-11
 
 ### Fixed

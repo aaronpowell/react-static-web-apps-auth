@@ -3,4 +3,5 @@ export type AuthProviders =
   | "facebook"
   | "github"
   | "google"
-  | "twitter";
+  | "twitter"
+  | string;

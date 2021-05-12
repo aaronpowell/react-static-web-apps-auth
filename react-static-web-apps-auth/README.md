@@ -25,13 +25,13 @@ const Login = () => {
   return (
     <div>
       <h2>Login to our site</h2>
-      <StaticWebAppsAuthLogins aad={false} />
+      <StaticWebAppsAuthLogins aad={false} customProviders={[ id: "okta", name: "Okta" ]} />
     </div>
   );
 };
 ```
 
-This component will display all the auth providers you want to use on your application and links for the user.
+This component will display all the auth providers you want to use on your application and links for the user. Custom OIDC providers can be registered using the `customProviders` prop and provide the `id` of the provider and the `name` you want displayed to the user.
 
 By default all auth providers will display, but they can be turned off by setting their corresponding prop to `false`.
 

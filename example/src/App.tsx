@@ -47,7 +47,10 @@ function App() {
         >
           Learn React
         </a>
-        <StaticWebAuthLogins customProviders={[{ id: "okta", name: "Okta" }]} />
+        <StaticWebAuthLogins
+          customProviders={[{ id: "okta", name: "Okta" }]}
+          label={(name) => `Do sign in ${name}`}
+        />
 
         <UserInfoContextProvider>
           <UserDisplay />

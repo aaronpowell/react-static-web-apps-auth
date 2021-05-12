@@ -6,10 +6,12 @@ const Login = ({
   name,
   id,
   postLoginRedirect,
+  label = (name) => `Sign in using ${name}`,
 }: {
   name: string;
   id: AuthProviders;
   postLoginRedirect?: string;
+  label?: (name: string) => string;
 }) => {
   return (
     <a
@@ -18,7 +20,7 @@ const Login = ({
       }`}
       className={`${id} login ${StaticWebAppsClassName}`}
     >
-      Sign in using {name}
+      {label(name)}
     </a>
   );
 };

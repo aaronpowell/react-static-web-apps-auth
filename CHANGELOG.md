@@ -1,10 +1,16 @@
 # Changelog for `react-static-web-apps-auth`
 
-## [0.2.0]
+## [1.0.0]
 
 ### Added
 
-- Support for custom auth providers as per GA!
+- Support for custom auth providers as per GA
+- Support for Apple as a provider
+- Ability to override the label of the provider
+
+### Changed
+
+- Only AAD, GitHub and Twitter are enabled by default, matching the providers for free tier
 
 ## [0.1.7] - 2021-03-11
 

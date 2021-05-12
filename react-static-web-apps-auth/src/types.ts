@@ -4,4 +4,5 @@ export type AuthProviders =
   | "github"
   | "google"
   | "twitter"
+  | "apple"
   | string;

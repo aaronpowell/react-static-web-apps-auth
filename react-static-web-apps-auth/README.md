@@ -25,7 +25,7 @@ const Login = () => {
   return (
     <div>
       <h2>Login to our site</h2>
-      <StaticWebAppsAuthLogins aad={false} customProviders={[ id: "okta", name: "Okta" ]} />
+      <StaticWebAppsAuthLogins aad={true} twitter={false} customProviders={[ id: "okta", name: "Okta" ]} />
     </div>
   );
 };
@@ -33,9 +33,11 @@ const Login = () => {
 
 This component will display all the auth providers you want to use on your application and links for the user. Custom OIDC providers can be registered using the `customProviders` prop and provide the `id` of the provider and the `name` you want displayed to the user.
 
-By default all auth providers will display, but they can be turned off by setting their corresponding prop to `false`.
+By default, only [managed auth providers](https://docs.microsoft.com/azure/static-web-apps/authentication-authorization?WT.mc_id=javascript-12079-aapowell) will display, but they can be turned off by setting their corresponding prop to `false`. All providers available [as configurable options](https://docs.microsoft.com/azure/static-web-apps/authentication-custom?tabs=aad&WT.mc_id=javascript-12079-aapowell) can be enabled using props.
 
 To redirect to a specific URL post-login, provide that path in the `postLoginRedirect` prop.
+
+The default label is `Sign in using ${name}`, but can be overridden with the `label` prop, which takes a function that receives the `name` of the provider and returns the label string.
 
 ### `<UserInfoContextProvider>`
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
 
-type CustomProvider = {
+export type CustomProvider = {
   id: string;
   name?: string;
 };
@@ -12,36 +12,78 @@ export type LoginProviderProps = {
   twitter: boolean;
   github: boolean;
   google: boolean;
+  apple: boolean;
   postLoginRedirect?: string;
   customProviders?: CustomProvider[];
+  label?: (name: string) => string;
 };
 
 type LoginProps = {
   postLoginRedirect?: string;
+  label?: (name: string) => string;
 };
 
-const AzureADLogin = ({ postLoginRedirect }: LoginProps) => (
-  <Login name="Azure AD" id="aad" postLoginRedirect={postLoginRedirect} />
+const AzureADLogin = ({ postLoginRedirect, label }: LoginProps) => (
+  <Login
+    name="Azure AD"
+    id="aad"
+    postLoginRedirect={postLoginRedirect}
+    label={label}
+  />
 );
-const FacebookLogin = ({ postLoginRedirect }: LoginProps) => (
-  <Login name="Facebook" id="facebook" postLoginRedirect={postLoginRedirect} />
+const FacebookLogin = ({ postLoginRedirect, label }: LoginProps) => (
+  <Login
+    name="Facebook"
+    id="facebook"
+    postLoginRedirect={postLoginRedirect}
+    label={label}
+  />
 );
-const TwitterLogin = ({ postLoginRedirect }: LoginProps) => (
-  <Login name="Twitter" id="twitter" postLoginRedirect={postLoginRedirect} />
+const TwitterLogin = ({ postLoginRedirect, label }: LoginProps) => (
+  <Login
+    name="Twitter"
+    id="twitter"
+    postLoginRedirect={postLoginRedirect}
+    label={label}
+  />
 );
-const GitHubLogin = ({ postLoginRedirect }: LoginProps) => (
-  <Login name="GitHub" id="github" postLoginRedirect={postLoginRedirect} />
+const GitHubLogin = ({ postLoginRedirect, label }: LoginProps) => (
+  <Login
+    name="GitHub"
+    id="github"
+    postLoginRedirect={postLoginRedirect}
+    label={label}
+  />
 );
-const GoogleLogin = ({ postLoginRedirect }: LoginProps) => (
-  <Login name="Google" id="google" postLoginRedirect={postLoginRedirect} />
+const GoogleLogin = ({ postLoginRedirect, label }: LoginProps) => (
+  <Login
+    name="Google"
+    id="google"
+    postLoginRedirect={postLoginRedirect}
+    label={label}
+  />
+);
+const AppleLogin = ({ postLoginRedirect, label }: LoginProps) => (
+  <Login
+    name="Apple"
+    id="apple"
+    postLoginRedirect={postLoginRedirect}
+    label={label}
+  />
 );
 
-const CustomProvider = ({
+const CustomProviderLogin = ({
   postLoginRedirect,
   id,
   name,
+  label,
 }: LoginProps & CustomProvider) => (
-  <Login name={name || id} id={id} postLoginRedirect={postLoginRedirect} />
+  <Login
+    name={name || id}
+    id={id}
+    postLoginRedirect={postLoginRedirect}
+    label={label}
+  />
 );
 
 const StaticWebAuthLogins = (props: LoginProviderProps) => {
@@ -49,33 +91,61 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
 
   if (props.azureAD) {
     providers.push(
-      <AzureADLogin postLoginRedirect={props.postLoginRedirect} />
+      <AzureADLogin
+        postLoginRedirect={props.postLoginRedirect}
+        label={props.label}
+      />
+    );
+  }
+  if (props.apple) {
+    providers.push(
+      <AppleLogin
+        postLoginRedirect={props.postLoginRedirect}
+        label={props.label}
+      />
     );
   }
   if (props.facebook) {
     providers.push(
-      <FacebookLogin postLoginRedirect={props.postLoginRedirect} />
+      <FacebookLogin
+        postLoginRedirect={props.postLoginRedirect}
+        label={props.label}
+      />
     );
   }
   if (props.twitter) {
     providers.push(
-      <TwitterLogin postLoginRedirect={props.postLoginRedirect} />
+      <TwitterLogin
+        postLoginRedirect={props.postLoginRedirect}
+        label={props.label}
+      />
     );
   }
   if (props.github) {
-    providers.push(<GitHubLogin postLoginRedirect={props.postLoginRedirect} />);
+    providers.push(
+      <GitHubLogin
+        postLoginRedirect={props.postLoginRedirect}
+        label={props.label}
+      />
+    );
   }
   if (props.google) {
-    providers.push(<GoogleLogin postLoginRedirect={props.postLoginRedirect} />);
+    providers.push(
+      <GoogleLogin
+        postLoginRedirect={props.postLoginRedirect}
+        label={props.label}
+      />
+    );
   }
 
   if (props.customProviders) {
     for (const provider of props.customProviders) {
       providers.push(
-        <CustomProvider
+        <CustomProviderLogin
           name={provider.name}
           id={provider.id}
           postLoginRedirect={props.postLoginRedirect}
+          label={props.label}
           key={provider.id}
         />
       );
@@ -87,10 +157,11 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
 
 StaticWebAuthLogins.defaultProps = {
   azureAD: true,
-  facebook: true,
+  facebook: false,
   twitter: true,
   github: true,
-  google: true,
+  google: false,
+  apple: false,
   postLoginRedirect: "",
 };
 
@@ -101,4 +172,6 @@ export {
   GitHubLogin,
   GoogleLogin,
   TwitterLogin,
+  AppleLogin,
+  CustomProviderLogin,
 };

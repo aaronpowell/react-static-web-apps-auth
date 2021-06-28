@@ -10,19 +10,24 @@ import {
 } from "@aaronpowell/react-static-web-apps-auth";
 
 const UserDisplay = () => {
-  const userInfo = useUserInfo();
-  if (userInfo.identityProvider) {
+  const { clientPrincipal, loaded } = useUserInfo();
+
+  if (!loaded) {
+    return <p>Checking user info...</p>;
+  }
+
+  if (clientPrincipal) {
     return (
       <div>
         <p>
-          {userInfo.identityProvider} {userInfo.userDetails} {userInfo.userId}{" "}
-          {userInfo.userRoles}
+          {clientPrincipal.identityProvider} {clientPrincipal.userDetails}{" "}
+          {clientPrincipal.userId} {clientPrincipal.userRoles}
         </p>
         <p>
           <Logout />
         </p>
         <p>
-          <UserPurge provider={userInfo.identityProvider} />
+          <UserPurge provider={clientPrincipal.identityProvider} />
         </p>
       </div>
     );

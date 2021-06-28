@@ -1,6 +1,6 @@
 export { StaticWebAuthLogins, LoginProviderProps } from "./StaticWebAuthLogins";
 export {
-  UserInfo,
+  ClientPrincipal as UserInfo,
   UserInfoContextProvider,
   useUserInfo,
 } from "./UserInfoContext";

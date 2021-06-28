@@ -29,6 +29,7 @@ const AzureADLogin = ({ postLoginRedirect, label }: LoginProps) => (
     id="aad"
     postLoginRedirect={postLoginRedirect}
     label={label}
+    key="aad"
   />
 );
 const FacebookLogin = ({ postLoginRedirect, label }: LoginProps) => (
@@ -37,6 +38,7 @@ const FacebookLogin = ({ postLoginRedirect, label }: LoginProps) => (
     id="facebook"
     postLoginRedirect={postLoginRedirect}
     label={label}
+    key="facebook"
   />
 );
 const TwitterLogin = ({ postLoginRedirect, label }: LoginProps) => (
@@ -45,6 +47,7 @@ const TwitterLogin = ({ postLoginRedirect, label }: LoginProps) => (
     id="twitter"
     postLoginRedirect={postLoginRedirect}
     label={label}
+    key="twitter"
   />
 );
 const GitHubLogin = ({ postLoginRedirect, label }: LoginProps) => (
@@ -53,6 +56,7 @@ const GitHubLogin = ({ postLoginRedirect, label }: LoginProps) => (
     id="github"
     postLoginRedirect={postLoginRedirect}
     label={label}
+    key="github"
   />
 );
 const GoogleLogin = ({ postLoginRedirect, label }: LoginProps) => (
@@ -61,6 +65,7 @@ const GoogleLogin = ({ postLoginRedirect, label }: LoginProps) => (
     id="google"
     postLoginRedirect={postLoginRedirect}
     label={label}
+    key="google"
   />
 );
 const AppleLogin = ({ postLoginRedirect, label }: LoginProps) => (
@@ -69,6 +74,7 @@ const AppleLogin = ({ postLoginRedirect, label }: LoginProps) => (
     id="apple"
     postLoginRedirect={postLoginRedirect}
     label={label}
+    key="apple"
   />
 );
 
@@ -83,6 +89,7 @@ const CustomProviderLogin = ({
     id={id}
     postLoginRedirect={postLoginRedirect}
     label={label}
+    key={id}
   />
 );
 
@@ -94,6 +101,7 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
       <AzureADLogin
         postLoginRedirect={props.postLoginRedirect}
         label={props.label}
+        key="aad"
       />
     );
   }
@@ -102,6 +110,7 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
       <AppleLogin
         postLoginRedirect={props.postLoginRedirect}
         label={props.label}
+        key="apple"
       />
     );
   }
@@ -110,6 +119,7 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
       <FacebookLogin
         postLoginRedirect={props.postLoginRedirect}
         label={props.label}
+        key="facebook"
       />
     );
   }
@@ -118,6 +128,7 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
       <TwitterLogin
         postLoginRedirect={props.postLoginRedirect}
         label={props.label}
+        key="twitter"
       />
     );
   }
@@ -126,6 +137,7 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
       <GitHubLogin
         postLoginRedirect={props.postLoginRedirect}
         label={props.label}
+        key="github"
       />
     );
   }
@@ -134,6 +146,7 @@ const StaticWebAuthLogins = (props: LoginProviderProps) => {
       <GoogleLogin
         postLoginRedirect={props.postLoginRedirect}
         label={props.label}
+        key="google"
       />
     );
   }

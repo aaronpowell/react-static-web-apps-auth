@@ -1,6 +1,6 @@
 # Changelog for `react-static-web-apps-auth`
 
-## [1.1.0]
+## [1.1.0] - 2021-06-28
 
 ### Added
 

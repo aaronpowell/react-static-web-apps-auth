@@ -1,6 +1,19 @@
 # Changelog for `react-static-web-apps-auth`
 
-## [1.0.0]
+## [1.1.0]
+
+### Added
+
+- Keys to the login providers, fixing a React error
+- Better handling of when you are running locally but without the SWA CLI
+- devcontainer for local development
+
+### Changed
+
+- Overhaul of the data exposed via the context provider to achieve https://github.com/aaronpowell/react-static-web-apps-auth/issues/3
+- Renamed the exported types to better reflect the names in the docs (`UserInfo` -> `ClientPrincipal`)
+
+## [1.0.0] - 2021-05-13
 
 ### Added
 

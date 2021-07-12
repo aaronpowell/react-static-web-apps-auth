@@ -1,8 +1,8 @@
 export { StaticWebAuthLogins, LoginProviderProps } from "./StaticWebAuthLogins";
 export {
-  ClientPrincipal as UserInfo,
-  UserInfoContextProvider,
-  useUserInfo,
-} from "./UserInfoContext";
+  ClientPrincipal,
+  ClientPrincipalContextProvider,
+  useClientPrincipal,
+} from "./ClientPrincipalContext";
 export { Logout } from "./Logout";
 export { UserPurge } from "./UserPurge";

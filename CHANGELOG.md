@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [1.2.0] - 2021-07-12
+
+### Changed
+
+- Removed remaining references to `UserInfo` and using `ClientPrincipal` instead
+
 ## [1.1.0] - 2021-06-28
 
 ### Added

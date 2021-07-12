@@ -8,17 +8,21 @@ export type ClientPrincipal = {
   userRoles: string[];
 };
 
-export type UserInfoContext = {
+export type ClientPrincipalContext = {
   loaded: boolean;
   clientPrincipal: ClientPrincipal | null;
 };
 
-const UserInfoContext = React.createContext<UserInfoContext>({
+const ClientPrincipalContext = React.createContext<ClientPrincipalContext>({
   loaded: false,
   clientPrincipal: null,
 });
 
-const UserInfoContextProvider = ({ children }: { children: JSX.Element }) => {
+const ClientPrincipalContextProvider = ({
+  children,
+}: {
+  children: JSX.Element;
+}) => {
   const [
     clientPrincipal,
     setClientPrincipal,
@@ -38,7 +42,7 @@ const UserInfoContextProvider = ({ children }: { children: JSX.Element }) => {
       } catch (e) {
         if (window.location.hostname === "localhost") {
           console.warn(
-            "Can't access the auth endoint. For local development, please use the Static Web Apps CLI to emulate authentication: https://github.com/azure/static-web-apps-cli"
+            "Can't access the auth endpoint. For local development, please use the Static Web Apps CLI to emulate authentication: https://github.com/azure/static-web-apps-cli"
           );
         } else {
           console.error(`Failed to unpack JSON.`, e);
@@ -52,12 +56,12 @@ const UserInfoContextProvider = ({ children }: { children: JSX.Element }) => {
   }, []);
 
   return (
-    <UserInfoContext.Provider value={{ loaded, clientPrincipal }}>
+    <ClientPrincipalContext.Provider value={{ loaded, clientPrincipal }}>
       {children}
-    </UserInfoContext.Provider>
+    </ClientPrincipalContext.Provider>
   );
 };
 
-const useUserInfo = () => useContext(UserInfoContext);
+const useClientPrincipal = () => useContext(ClientPrincipalContext);
 
-export { UserInfoContextProvider, useUserInfo };
+export { ClientPrincipalContextProvider, useClientPrincipal };

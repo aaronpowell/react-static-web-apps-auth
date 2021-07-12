@@ -39,21 +39,21 @@ To redirect to a specific URL post-login, provide that path in the `postLoginRed
 
 The default label is `Sign in using ${name}`, but can be overridden with the `label` prop, which takes a function that receives the `name` of the provider and returns the label string.
 
-### `<UserInfoContextProvider>`
+### `<ClientPrincipalContextProvider>`
 
 ```typescript
 const App = () => {
   return (
-    <UserInfoContextProvider>
+    <ClientPrincipalContextProvider>
       <MySite />
-    </UserInfoContextProvider>
+    </ClientPrincipalContextProvider>
   );
 };
 ```
 
 This component provides React Context for the current user (or a series of `undefined` values when you're not logged in), aligning with the information available [in the Client Principal](https://docs.microsoft.com/azure/static-web-apps/user-information?tabs=javascript#client-principal-data&WT.mc_id=javascript-12079-aapowell).
 
-Additionally, a `useContext` React Hook is available, `useUserInfo`, for use within the application.
+Additionally, a `useContext` React Hook is available, `useClientPrincipal`, for use within the application.
 
 ### `<Logout />`
 

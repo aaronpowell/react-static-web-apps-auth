@@ -4,13 +4,13 @@ import "./App.css";
 import {
   Logout,
   StaticWebAuthLogins,
-  UserInfoContextProvider,
+  ClientPrincipalContextProvider,
   UserPurge,
-  useUserInfo,
+  useClientPrincipal,
 } from "@aaronpowell/react-static-web-apps-auth";
 
 const UserDisplay = () => {
-  const { clientPrincipal, loaded } = useUserInfo();
+  const { clientPrincipal, loaded } = useClientPrincipal();
 
   if (!loaded) {
     return <p>Checking user info...</p>;
@@ -57,9 +57,9 @@ function App() {
           label={(name) => `Do sign in ${name}`}
         />
 
-        <UserInfoContextProvider>
+        <ClientPrincipalContextProvider>
           <UserDisplay />
-        </UserInfoContextProvider>
+        </ClientPrincipalContextProvider>
       </header>
     </div>
   );

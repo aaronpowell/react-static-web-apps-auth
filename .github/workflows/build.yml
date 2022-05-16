@@ -8,9 +8,6 @@ on:
 
 jobs:
   build:
-    defaults:
-      run:
-        working-directory: react-static-web-apps-auth
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -23,16 +20,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run lint
-    - run: npm run build
+    - run: npm ci -ws
+    - run: npm run lint -ws
+    - run: npm run build -ws
     # TODO - tests
     # - run: npm test
 
   package:
-    defaults:
-      run:
-        working-directory: react-static-web-apps-auth
     needs: [build]
     runs-on: ubuntu-18.04
     steps:
@@ -42,10 +36,10 @@ jobs:
         with:
           node-version: 14.x
 
-      - run: npm ci
-      - run: npm run build
-      - run: npm version prerelease --preid=ci-$GITHUB_RUN_ID --no-git-tag-version
-      - run: npm pack
+      - run: npm i -ws
+      - run: npm run build -ws
+      - run: npm version prerelease --preid=ci-$GITHUB_RUN_ID --no-git-tag-version -ws
+      - run: npm pack -ws
       - name: Upload
         uses: actions/upload-artifact@v2
         with:

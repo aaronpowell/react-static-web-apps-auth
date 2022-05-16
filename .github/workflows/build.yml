@@ -23,7 +23,7 @@ jobs:
 
     - run: npm i -g npm@latest
 
-    - run: npm ci -ws
+    - run: npm i -ws
     - run: npm run lint -ws
     - run: npm run build -ws
     # TODO - tests

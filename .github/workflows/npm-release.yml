@@ -33,7 +33,7 @@ jobs:
       - run: npm i -g npm@latest
 
       - run: |
-          npm ci -ws
+          npm i -ws
           npm run lint -ws
           npm run build -ws
           npm pack -ws

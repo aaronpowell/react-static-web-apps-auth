@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-18.04]
+        os: [ubuntu-latest]
         node-version: [14.x, 16.x, 18.x]
 
     steps:
@@ -31,7 +31,7 @@ jobs:
 
   package:
     needs: [build]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
@@ -54,7 +54,7 @@ jobs:
   publish:
     name: "Publish to GitHub Packages"
     needs: [package]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: github.repository_owner == 'aaronpowell' # && github.token != ''
     steps:
     - name: Upload

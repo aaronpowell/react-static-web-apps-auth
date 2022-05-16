@@ -1,0 +1,6 @@
+{
+  "workspaces": [
+    "example",
+    "react-static-web-apps-auth"
+  ]
+}

@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: package
-            path: "react-static-web-apps-auth/*.tgz"
+            path: "aaronpowell*.tgz"
 
   publish:
     name: "Publish to GitHub Packages"

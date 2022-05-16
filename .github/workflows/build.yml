@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-18.04]
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x, 16.x, 18.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -34,7 +34,9 @@ jobs:
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
+
+      - run: npm i -g npm@latest
 
       - run: npm i -ws
       - run: npm run build -ws

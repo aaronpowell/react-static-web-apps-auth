@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: release_id
-            path: react-static-web-apps-auth/release.txt
+            path: release.txt
 
   release:
     needs: build

@@ -11,23 +11,33 @@ export type ClientPrincipal = {
 export type ClientPrincipalContext = {
   loaded: boolean;
   clientPrincipal: ClientPrincipal | null;
+  swaCookie: string | null;
 };
 
 const ClientPrincipalContext = React.createContext<ClientPrincipalContext>({
   loaded: false,
   clientPrincipal: null,
+  swaCookie: null,
 });
+
+const cookieParser = (cookies: string): Record<string, string> =>
+  cookies.split("; ").reduce(
+    (obj, cookie) => ({
+      ...obj,
+      [cookie.split("=")[0]]: cookie.split("=").slice(1).join("="),
+    }),
+    {}
+  );
 
 const ClientPrincipalContextProvider = ({
   children,
 }: {
   children: JSX.Element;
 }) => {
-  const [
-    clientPrincipal,
-    setClientPrincipal,
-  ] = useState<ClientPrincipal | null>(null);
+  const [clientPrincipal, setClientPrincipal] =
+    useState<ClientPrincipal | null>(null);
   const [loaded, setLoaded] = useState(false);
+  const [swaCookie, setSwaCookie] = useState<string | null>(null);
 
   useEffect(() => {
     const run = async () => {
@@ -50,13 +60,18 @@ const ClientPrincipalContextProvider = ({
       }
 
       setLoaded(true);
+      setSwaCookie(
+        cookieParser(document.cookie)["StaticWebAppsAuthCookie"] || null
+      );
     };
 
     run();
   }, []);
 
   return (
-    <ClientPrincipalContext.Provider value={{ loaded, clientPrincipal }}>
+    <ClientPrincipalContext.Provider
+      value={{ loaded, clientPrincipal, swaCookie }}
+    >
       {children}
     </ClientPrincipalContext.Provider>
   );

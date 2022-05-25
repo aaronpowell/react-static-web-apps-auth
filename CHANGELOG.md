@@ -1,11 +1,17 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [1.4.0] - unreleased
+
+### Added
+
+- Expose the SWA auth cookie, incase you need it in the browser
+
 ## [1.3.0] - 2022-05-16
 
 ### Changed
 
-* Using React 18
-* Internally using npm workspaces for better dependency management
+- Using React 18
+- Internally using npm workspaces for better dependency management
 
 ## [1.2.0] - 2021-07-12
 

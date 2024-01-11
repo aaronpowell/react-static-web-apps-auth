@@ -40,9 +40,12 @@ const ClientPrincipalContextProvider = ({
   const [swaCookie, setSwaCookie] = useState<string | null>(null);
 
   useEffect(() => {
+    const abortController = new AbortController();
     const run = async () => {
       try {
-        const res = await fetch("/.auth/me");
+        const res = await fetch("/.auth/me", {
+          signal: abortController.signal,
+        });
         const json: {
           clientPrincipal: ClientPrincipal | null;
         } = await res.json();
@@ -66,6 +69,8 @@ const ClientPrincipalContextProvider = ({
     };
 
     run();
+
+    return () => abortController.abort();
   }, []);
 
   return (

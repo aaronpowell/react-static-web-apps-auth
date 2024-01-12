@@ -40,11 +40,11 @@ const ClientPrincipalContextProvider = ({
   const [swaCookie, setSwaCookie] = useState<string | null>(null);
 
   useEffect(() => {
-    const abortController = new AbortController();
+    // const abortController = new AbortController();
     const run = async () => {
       try {
         const res = await fetch("/.auth/me", {
-          signal: abortController.signal,
+          // signal: abortController.signal,
         });
         const json: {
           clientPrincipal: ClientPrincipal | null;
@@ -52,10 +52,16 @@ const ClientPrincipalContextProvider = ({
         if (json.clientPrincipal) {
           setClientPrincipal(json.clientPrincipal);
         }
-      } catch (e) {
+      } catch (e: any) {
+        if (e.name === "AbortError") {
+          // This was caused by the abort controller being aborted so we can ignore it
+          return;
+        }
+
         if (window.location.hostname === "localhost") {
           console.warn(
-            "Can't access the auth endpoint. For local development, please use the Static Web Apps CLI to emulate authentication: https://github.com/azure/static-web-apps-cli"
+            "Can't access the auth endpoint. For local development, please use the Static Web Apps CLI to emulate authentication: https://github.com/azure/static-web-apps-cli",
+            e
           );
         } else {
           console.error(`Failed to unpack JSON.`, e);
@@ -70,7 +76,7 @@ const ClientPrincipalContextProvider = ({
 
     run();
 
-    return () => abortController.abort();
+    // return () => abortController.abort();
   }, []);
 
   return (

@@ -1,6 +1,12 @@
 # Changelog for `react-static-web-apps-auth`
 
-## [1.4.0] - unreleased
+## [1.5.0] - 2024-01-12
+
+### Added
+
+- Using `AbortController` to cancel fetches when the component is unmounted
+
+## [1.4.0] - 2022-05-25
 
 ### Added
 

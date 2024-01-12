@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [1.5.1] - 2024-01-12
+
+### Fixed
+
+- Accidentally shipped the `AbortController` commented out - don't test in production kids!
+
 ## [1.5.0] - 2024-01-12
 
 ### Added

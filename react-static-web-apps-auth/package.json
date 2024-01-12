@@ -1,6 +1,6 @@
 {
   "name": "@aaronpowell/react-static-web-apps-auth",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "A library to help creating authenticated React apps on Azure Static Web Apps",
   "main": "build/index.js",
   "types": "build/index.d.ts",

@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -12,20 +12,20 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x, 20.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - run: npm i -g npm@latest
+      - run: npm i -g npm@latest
 
-    - run: npm i -ws
-    - run: npm run lint -ws
-    - run: npm run build -ws
+      - run: npm i -ws
+      - run: npm run lint -ws
+      - run: npm run build -ws
     # TODO - tests
     # - run: npm test
 
@@ -34,10 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 14.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 20.x
 
       - run: npm i -g npm@latest
 
@@ -48,8 +48,8 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-            name: package
-            path: "aaronpowell*.tgz"
+          name: package
+          path: "aaronpowell*.tgz"
 
   publish:
     name: "Publish to GitHub Packages"
@@ -57,16 +57,16 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository_owner == 'aaronpowell' # && github.token != ''
     steps:
-    - name: Upload
-      uses: actions/download-artifact@v2
-      with:
+      - name: Upload
+        uses: actions/download-artifact@v2
+        with:
           name: package
-    - uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        registry-url: https://npm.pkg.github.com/
-        scope: "@aaronpowell"
-    - run: echo "registry=https://npm.pkg.github.com/@aaronpowell" >> .npmrc
-    - run: npm publish $(ls *.tgz)
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://npm.pkg.github.com/
+          scope: "@aaronpowell"
+      - run: echo "registry=https://npm.pkg.github.com/@aaronpowell" >> .npmrc
+      - run: npm publish $(ls *.tgz)
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -15,7 +15,7 @@ jobs:
       name: build
       url: ${{ steps.create_release.outputs.html_url }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -38,7 +38,7 @@ jobs:
           npm run build -ws
           npm pack -ws
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: package
           path: "aaronpowell*.tgz"
@@ -54,7 +54,7 @@ jobs:
           asset_content_type: application/zip
       - run: echo ${{ steps.create_release.outputs.id }} >> release.txt
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release_id
           path: release.txt
@@ -66,12 +66,12 @@ jobs:
       name: release
     steps:
       - name: Download package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: release_id
       - run: echo "release_id=$(cat release.txt)" >> $GITHUB_ENV
       - name: Publish release
-        uses: actions/github-script@v3
+        uses: actions/github-script@v7
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -85,12 +85,12 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Download package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: package
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
@@ -102,12 +102,12 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Download package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: package
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: https://npm.pkg.github.com/

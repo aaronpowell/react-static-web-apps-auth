@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./Login";
+import Login, { LoginProps } from "./Login";
 
 export type CustomProvider = {
   id: string;
@@ -18,12 +18,9 @@ export type LoginProviderProps = {
   label?: (name: string) => string;
 };
 
-type LoginProps = {
-  postLoginRedirect?: string;
-  label?: (name: string) => string;
-};
+type LoginWrapperProps = Pick<LoginProps, "postLoginRedirect" | "label">;
 
-const AzureADLogin = ({ postLoginRedirect, label }: LoginProps) => (
+const AzureADLogin = ({ postLoginRedirect, label }: LoginWrapperProps) => (
   <Login
     name="Azure AD"
     id="aad"
@@ -32,7 +29,7 @@ const AzureADLogin = ({ postLoginRedirect, label }: LoginProps) => (
     key="aad"
   />
 );
-const FacebookLogin = ({ postLoginRedirect, label }: LoginProps) => (
+const FacebookLogin = ({ postLoginRedirect, label }: LoginWrapperProps) => (
   <Login
     name="Facebook"
     id="facebook"
@@ -41,7 +38,7 @@ const FacebookLogin = ({ postLoginRedirect, label }: LoginProps) => (
     key="facebook"
   />
 );
-const TwitterLogin = ({ postLoginRedirect, label }: LoginProps) => (
+const TwitterLogin = ({ postLoginRedirect, label }: LoginWrapperProps) => (
   <Login
     name="Twitter"
     id="twitter"
@@ -50,7 +47,7 @@ const TwitterLogin = ({ postLoginRedirect, label }: LoginProps) => (
     key="twitter"
   />
 );
-const GitHubLogin = ({ postLoginRedirect, label }: LoginProps) => (
+const GitHubLogin = ({ postLoginRedirect, label }: LoginWrapperProps) => (
   <Login
     name="GitHub"
     id="github"
@@ -59,7 +56,7 @@ const GitHubLogin = ({ postLoginRedirect, label }: LoginProps) => (
     key="github"
   />
 );
-const GoogleLogin = ({ postLoginRedirect, label }: LoginProps) => (
+const GoogleLogin = ({ postLoginRedirect, label }: LoginWrapperProps) => (
   <Login
     name="Google"
     id="google"
@@ -68,7 +65,7 @@ const GoogleLogin = ({ postLoginRedirect, label }: LoginProps) => (
     key="google"
   />
 );
-const AppleLogin = ({ postLoginRedirect, label }: LoginProps) => (
+const AppleLogin = ({ postLoginRedirect, label }: LoginWrapperProps) => (
   <Login
     name="Apple"
     id="apple"
@@ -83,7 +80,7 @@ const CustomProviderLogin = ({
   id,
   name,
   label,
-}: LoginProps & CustomProvider) => (
+}: LoginWrapperProps & CustomProvider) => (
   <Login
     name={name || id}
     id={id}

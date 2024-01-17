@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [1.6.1] - 2024-01-17
+
+## Added
+
+- Custom render function support for the login/logout components
+
 ## [1.5.1] - 2024-01-12
 
 ### Fixed

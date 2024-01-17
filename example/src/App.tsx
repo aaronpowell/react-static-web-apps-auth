@@ -45,6 +45,19 @@ function App() {
           label={(name) => `Do sign in ${name}`}
         />
 
+        <br />
+        <p>Login with custom renderer.</p>
+        <StaticWebAuthLogins
+          customProviders={[{ id: "okta", name: "Okta" }]}
+          customRenderer={({ href, className, name }) => (
+            <button className="login-button">
+              <a href={href} className={className}>
+                Custom Login Renderer - {name}
+              </a>
+            </button>
+          )}
+        />
+
         <ClientPrincipalContextProvider>
           <UserDisplay />
         </ClientPrincipalContextProvider>

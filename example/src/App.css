@@ -44,3 +44,8 @@
 a.login {
   display: block;
 }
+
+.login-button {
+  display: block;
+  margin: 10px;
+}

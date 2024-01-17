@@ -7,24 +7,38 @@ export type LoginProps = {
   id: AuthProviders;
   postLoginRedirect?: string;
   label?: (name: string) => string;
+  customRenderer?: (props: RenderLoginProps) => JSX.Element;
 };
 
-const Login = ({
-  name,
-  id,
-  postLoginRedirect,
-  label = (name) => `Sign in using ${name}`,
-}: LoginProps) => {
-  return (
-    <a
-      href={`/.auth/login/${id}${
-        postLoginRedirect ? `?post_login_redirect_uri=${postLoginRedirect}` : ""
-      }`}
-      className={`${id} login ${StaticWebAppsClassName}`}
-    >
-      {label(name)}
-    </a>
+export type RenderLoginProps = LoginProps & {
+  href: string;
+  className: string;
+};
+
+const Login = (props: LoginProps) => {
+  const href = `/.auth/login/${props.id}${
+    props.postLoginRedirect
+      ? `?post_login_redirect_uri=${props.postLoginRedirect}`
+      : ""
+  }`;
+  const className = `${props.id} login ${StaticWebAppsClassName}`;
+
+  return props.customRenderer ? (
+    props.customRenderer({ ...props, href, className })
+  ) : (
+    <DefaultRenderer {...props} href={href} className={className} />
   );
 };
+
+const DefaultRenderer = ({
+  name,
+  label = (name) => `Sign in using ${name}`,
+  href,
+  className,
+}: RenderLoginProps) => (
+  <a href={href} className={className}>
+    {label(name)}
+  </a>
+);
 
 export default Login;

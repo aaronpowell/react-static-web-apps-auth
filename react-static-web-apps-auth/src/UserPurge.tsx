@@ -5,9 +5,11 @@ import { AuthProviders } from "./types";
 const UserPurge = ({
   globally,
   provider,
+  label
 }: {
   globally: boolean;
   provider: AuthProviders;
+  label?: string
 }) => {
   const host = globally ? "identity.azurestaticapps.net" : location.hostname;
 
@@ -16,7 +18,7 @@ const UserPurge = ({
       href={`https://${host}/.auth/purge/${provider}`}
       className={`purge ${StaticWebAppsClassName}`}
     >
-      Purge user information
+      {label ?? "Purge user information"}
     </a>
   );
 };

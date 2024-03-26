@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [1.7.0] - 2024-03-26
+
+### Added
+
+- Ability to provide a custom label to `UserPurge`
+
 ## [1.6.1] - 2024-01-17
 
 ## Added

@@ -2,29 +2,50 @@ import React from "react";
 import { StaticWebAppsClassName } from "./constants";
 import { AuthProviders } from "./types";
 
+type UserPurgeRenderProps = {
+  label: string;
+  href: string;
+  className: string;
+};
+
 const UserPurge = ({
   globally,
   provider,
-  label
+  label,
+  customRenderer,
 }: {
   globally: boolean;
   provider: AuthProviders;
-  label?: string
+  label?: string;
+  customRenderer?: (props: UserPurgeRenderProps) => JSX.Element;
 }) => {
   const host = globally ? "identity.azurestaticapps.net" : location.hostname;
+  const href = `https://${host}/.auth/purge/${provider}`;
+  const className = `purge ${StaticWebAppsClassName}`;
 
-  return (
-    <a
-      href={`https://${host}/.auth/purge/${provider}`}
-      className={`purge ${StaticWebAppsClassName}`}
-    >
-      {label ?? "Purge user information"}
-    </a>
+  return customRenderer ? (
+    customRenderer({
+      href,
+      className,
+      label: label ?? "Purge user information",
+    })
+  ) : (
+    <DefaultRenderer
+      href={href}
+      className={className}
+      label={label ?? "Purge user information"}
+    />
   );
 };
 
 UserPurge.defaultProps = {
   globally: false,
 };
+
+const DefaultRenderer = (props: UserPurgeRenderProps) => (
+  <a href={props.href} className={props.className}>
+    {props.label}
+  </a>
+);
 
 export { UserPurge };

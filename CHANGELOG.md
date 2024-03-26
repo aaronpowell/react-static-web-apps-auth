@@ -1,5 +1,11 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [1.7.1] - 2024-03-26
+
+## Added
+
+- Custom render function support for User Purge component
+
 ## [1.7.0] - 2024-03-26
 
 ### Added

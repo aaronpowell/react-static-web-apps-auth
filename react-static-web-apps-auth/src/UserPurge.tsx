@@ -19,8 +19,10 @@ const UserPurge = ({
   label?: string;
   customRenderer?: (props: UserPurgeRenderProps) => JSX.Element;
 }) => {
-  const host = globally ? "identity.azurestaticapps.net" : location.hostname;
-  const href = `https://${host}/.auth/purge/${provider}`;
+  const host = globally
+    ? "https://identity.azurestaticapps.net"
+    : location.origin;
+  const href = `${host}/.auth/purge/${provider}`;
   const className = `purge ${StaticWebAppsClassName}`;
 
   return customRenderer ? (

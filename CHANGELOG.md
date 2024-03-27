@@ -1,8 +1,14 @@
 # Changelog for `react-static-web-apps-auth`
 
+## [1.7.2] - 2024-03-27
+
+### Fixed
+
+- Localhost path for user perge didn't respect port number or prototcol
+
 ## [1.7.1] - 2024-03-26
 
-## Added
+### Added
 
 - Custom render function support for User Purge component
 
